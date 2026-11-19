@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="750.0" prefWidth="1100.0" style="-fx-background-color: #f4f6fa;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ActividadesController">
+
+ <top>
+            <VBox>
+                      <MenuBar>
+                  <menus>
+                     <Menu text="Archivo">
+                        <items>
+                           <SeparatorMenuItem />
+                           <MenuItem fx:id="btnsalir" onAction="#onsalir" text="Salir" />
+                        </items>
+                     </Menu>
+               
+                     <Menu text="Ayuda">
+                        <items>
+                           <MenuItem onAction="#onacercade" text="Acerca de" />
+                        </items>
+                     </Menu>
+                  </menus>
+               </MenuBar>
+               <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: white; -fx-border-color: #dde3ee; -fx-border-width: 0 0 1 0;">
+                  <padding>
+                     <Insets bottom="14.0" left="24.0" right="24.0" top="14.0" />
+                  </padding>
+                  <VBox spacing="2.0">
+                     <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1f3a5f;" text="Gestor de Actividades" />
+                     <Label style="-fx-font-size: 11px; -fx-text-fill: #6b7a90;" text="Organiza, descubre e inscríbete en actividades del centro" />
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER_RIGHT" spacing="2.0">
+                     <Label style="-fx-font-weight: bold; -fx-text-fill: #1f3a5f;" text="Liberto Valero " />
+                     <Label style="-fx-font-size: 11px; -fx-text-fill: #6b7a90;" text="Alumno (DAM2)" />
+                  </VBox>
+               </HBox>
+            </VBox>
+         </top>
+
+
+   <!-- NAVEGACIÓN LATERAL -->
+   <left>
+      <VBox prefWidth="220.0" spacing="6.0" style="-fx-background-color: #eef1f6; -fx-border-color: #dde3ee; -fx-border-width: 0 1 0 0;">
+         <padding>
+            <Insets bottom="20.0" left="12.0" right="12.0" top="20.0" />
+         </padding>
+         <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#irinicio" style="-fx-background-color: transparent; -fx-text-fill: #33415c; -fx-background-radius: 8;" text="Inicio" />
+         <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#irinscripcion" style="-fx-background-color: transparent; -fx-text-fill: #33415c; -fx-background-radius: 8;" text="Inscripción" />
+         <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#iractividades" style="-fx-background-color: #2f7de1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;" text="Actividades" />
+         <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#irconfiguracion" style="-fx-background-color: transparent; -fx-text-fill: #33415c; -fx-background-radius: 8;" text="Configuración" />
+      </VBox>
+   </left>
+
+   <!-- CONTENIDO PRINCIPAL -->
+   <center>
+      <VBox spacing="16.0">
+         <padding>
+            <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+         </padding>
+
+         <!-- Título de la vista -->
+         <VBox spacing="4.0" style="-fx-background-color: #dfeafb; -fx-background-radius: 10; -fx-padding: 18;">
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1f3a5f;" text="Gestión de actividades" />
+            <Label style="-fx-text-fill: #4a5a73;" text="Consulta y organiza la oferta de actividades del centro." />
+         </VBox>
+
+         <!-- Pestañas por categoría -->
+         <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <tabs>
+               <Tab text="Actividades">
+                  <content>
+                     <VBox spacing="12.0">
+                        <padding>
+                           <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </padding>
+
+                        <!-- Barra de búsqueda -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <TextField fx:id="txtBuscar" onAction="#onBuscar" prefHeight="26.0" prefWidth="127.0" promptText="Buscar actividades..." />
+                           <Label fx:id="lblEstado" prefHeight="18.0" prefWidth="149.0" />
+                           <ComboBox fx:id="cmbCategoria" prefHeight="26.0" prefWidth="98.0" promptText="Categoría">
+                              <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                 </FXCollections>
+                              </items>
+                           </ComboBox>
+                           <ComboBox fx:id="cmbEstado" prefHeight="26.0" prefWidth="102.0" promptText="Estado">
+                              <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Todos" />
+                                    <String fx:value="Abierta" />
+                                    <String fx:value="Completa" />
+                                 </FXCollections>
+                              </items>
+                           </ComboBox>
+                           <Region HBox.hgrow="ALWAYS" />
+                           <Button fx:id="btnBuscar" style="-fx-background-color: #eef1f6; -fx-text-fill: #1f3a5f; -fx-background-radius: 6;" text="Buscar" />
+                           <Button fx:id="btnNueva" onAction="#onNuevaActividad" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #2f7de1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6;" text="Nueva actividad" />
+                        </HBox>
+
+                        <!-- Tabla de actividades (sin filas de ejemplo) -->
+                        <TableView fx:id="tblActividades" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="colActividad" prefWidth="260.0" text="Actividad" />
+                              <TableColumn fx:id="colCategoria" prefWidth="160.0" text="Categoría" />
+                              <TableColumn fx:id="colFecha" prefWidth="140.0" text="Fecha" />
+                              <TableColumn fx:id="colPlazas" prefWidth="100.0" text="Plazas" />
+                              <TableColumn fx:id="colEstado" prefWidth="140.0" text="Estado" />
+                           </columns>
+                        </TableView>
+                     </VBox>
+                  </content>
+               </Tab>
+            </tabs>
+         </TabPane>
+
+         <!-- Detalles y resumen -->
+         <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="16.0">
+            <Button fx:id="btnEliminar" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#onEliminar" text="Eliminar" />
+            <Button fx:id="btnEditar" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#onEditar" text="Editar" />
+         </HBox>
+      </VBox>
+   </center>
+
+   <!-- PIE -->
+   <bottom>
+      <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: white; -fx-border-color: #dde3ee; -fx-border-width: 1 0 0 0;">
+         <padding>
+            <Insets bottom="8.0" left="24.0" right="24.0" top="8.0" />
+         </padding>
+         <Label style="-fx-font-size: 10px; -fx-text-fill: #6b7a90;" text="Gestor de Actividades · v1.0 | IES José Luis Martínez Palomo" />
+         <Region HBox.hgrow="ALWAYS" />
+         <Label style="-fx-font-size: 10px; -fx-text-fill: #6b7a90;" text="DAM2 | Desarrollo de Interfaces" />
+      </HBox>
+   </bottom>
+</BorderPane>

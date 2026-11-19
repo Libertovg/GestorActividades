@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ConfiguracionController">
+   <children>
+      <BorderPane prefHeight="750.0" prefWidth="1100.0" style="-fx-background-color: #f4f6fa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+         <!-- CABECERA: barra de menús + cabecera común -->
+         <top>
+            <VBox>
+                    <MenuBar>
+                  <menus>
+                     <Menu text="Archivo">
+                        <items>
+                           <SeparatorMenuItem />
+                           <MenuItem fx:id="btnsalir" onAction="#onsalir" text="Salir" />
+                        </items>
+                     </Menu>
+               
+                     <Menu text="Ayuda">
+                        <items>
+                           <MenuItem onAction="#onacercade" text="Acerca de" />
+                        </items>
+                     </Menu>
+                  </menus>
+               </MenuBar>
+               <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: white; -fx-border-color: #dde3ee; -fx-border-width: 0 0 1 0;">
+                  <padding>
+                     <Insets bottom="14.0" left="24.0" right="24.0" top="14.0" />
+                  </padding>
+                  <VBox spacing="2.0">
+                     <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1f3a5f;" text="Gestor de Actividades" />
+                     <Label style="-fx-font-size: 11px; -fx-text-fill: #6b7a90;" text="Organiza, descubre e inscríbete en actividades del centro" />
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER_RIGHT" spacing="2.0">
+                     <Label style="-fx-font-weight: bold; -fx-text-fill: #1f3a5f;" text="Liberto Valero" />
+                     <Label style="-fx-font-size: 11px; -fx-text-fill: #6b7a90;" text="Alumno(DAM2)" />
+                  </VBox>
+               </HBox>
+            </VBox>
+         </top>
+
+         <!-- NAVEGACIÓN LATERAL -->
+         <left>
+            <VBox prefWidth="220.0" spacing="6.0" style="-fx-background-color: #eef1f6; -fx-border-color: #dde3ee; -fx-border-width: 0 1 0 0;">
+               <padding>
+                  <Insets bottom="20.0" left="12.0" right="12.0" top="20.0" />
+               </padding>
+               <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#irinicio" style="-fx-background-color: transparent; -fx-text-fill: #33415c; -fx-background-radius: 8;" text="Inicio" />
+               <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#irinscripcion" style="-fx-background-color: transparent; -fx-text-fill: #33415c; -fx-background-radius: 8;" text="Inscripción" />
+               <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#iractividades" style="-fx-background-color: transparent; -fx-text-fill: #33415c; -fx-background-radius: 8;" text="Actividades" />
+               <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#irconfiguracion" style="-fx-background-color: #2f7de1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;" text="Configuración" />
+            </VBox>
+         </left>
+
+         <!-- CONTENIDO PRINCIPAL -->
+         <center>
+            <VBox spacing="16.0">
+               <padding>
+                  <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+               </padding>
+
+               <!-- Título de la vista -->
+               <VBox spacing="4.0" style="-fx-background-color: #dfeafb; -fx-background-radius: 10; -fx-padding: 18;">
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1f3a5f;" text="Configuración" />
+                  <Label style="-fx-text-fill: #4a5a73;" text="Personaliza la aplicación según tus preferencias." />
+               </VBox>
+
+               <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                  <tabs>
+
+                     <!-- Pestaña Apariencia: contenido completo -->
+                     <Tab text="Apariencia">
+                        <content>
+                           <VBox spacing="16.0">
+                              <padding>
+                                 <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                              </padding>
+
+                              <VBox spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #dde3ee; -fx-border-radius: 10; -fx-padding: 16;">
+                                 <Label fx:id="lblFuente" text="Label" />
+                                 <Label style="-fx-font-weight: bold; -fx-text-fill: #1f3a5f;" text="Tema y estilo" />
+                                 <GridPane hgap="24.0" vgap="8.0">
+                                    <columnConstraints>
+                                       <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                                       <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                                    </columnConstraints>
+
+                                    <Label text="Tema de la aplicación" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <Label text="Tamaño de fuente de la interfaz" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    <ComboBox fx:id="cmbTema" maxWidth="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                       <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="Claro (por defecto)" />
+                                             <String fx:value="Oscuro" />
+                                             <String fx:value="Automático" />
+                                          </FXCollections>
+                                       </items>
+                                    </ComboBox>
+                                    <Slider fx:id="sliderFuente" majorTickUnit="5.0" max="20.0" maxWidth="Infinity" min="10.0" showTickLabels="true" showTickMarks="true" value="14.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                    <Label text="Color principal" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                    <Label text="Nivel de zoom de la interfaz" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <ColorPicker fx:id="cpColor" maxWidth="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                    <Spinner fx:id="spZoom" editable="true" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <rowConstraints>
+                                       <RowConstraints />
+                                       <RowConstraints />
+                                       <RowConstraints />
+                                       <RowConstraints />
+                                    </rowConstraints>
+                                 </GridPane>
+                              </VBox>
+
+                              <TitledPane collapsible="false" text="Opciones de visualización">
+                                 <content>
+                                    <GridPane hgap="24.0" vgap="10.0">
+                                       <padding>
+                                          <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                       </padding>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                                          <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                                       </columnConstraints>
+
+                                       <CheckBox fx:id="chkImagenes" selected="true" text="Mostrar imágenes en las actividades" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                       <CheckBox fx:id="chkAnimaciones" selected="true" text="Animaciones de la interfaz" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                       <CheckBox fx:id="chkDescripciones" selected="true" text="Mostrar descripciones completas" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                       <CheckBox fx:id="chkConsejos" text="Mostrar consejos de ayuda" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       <CheckBox fx:id="chkCompacto" text="Usar diseño compacto" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                       <ComboBox fx:id="cmbIdioma" maxWidth="Infinity" promptText="Idioma de la aplicación" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <items>
+                                             <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="Español (España)" />
+                                                <String fx:value="English" />
+                                             </FXCollections>
+                                          </items>
+                                       </ComboBox>
+                                       <rowConstraints>
+                                          <RowConstraints />
+                                          <RowConstraints />
+                                          <RowConstraints />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </content>
+                              </TitledPane>
+
+                              <Region VBox.vgrow="ALWAYS" />
+
+                              <HBox alignment="CENTER_RIGHT" spacing="12.0">
+                                 <Button fx:id="btnRestablecer" onAction="#onRestablecer" style="-fx-background-color: #eef1f6; -fx-text-fill: #1f3a5f; -fx-background-radius: 6;" text="Restablecer" />
+                                 <Button fx:id="btnGuardar" onAction="#onGuardar" style="-fx-background-color: #2f7de1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6;" text="Guardar cambios" />
+                              </HBox>
+                           </VBox>
+                        </content>
+                     </Tab>
+                  </tabs>
+               </TabPane>
+            </VBox>
+         </center>
+
+         <!-- PIE -->
+         <bottom>
+            <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: white; -fx-border-color: #dde3ee; -fx-border-width: 1 0 0 0;">
+               <padding>
+                  <Insets bottom="8.0" left="24.0" right="24.0" top="8.0" />
+               </padding>
+               <Label style="-fx-font-size: 10px; -fx-text-fill: #6b7a90;" text="Gestor de Actividades · v1.0 | IES José Luis Martínez Palomo" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Label style="-fx-font-size: 10px; -fx-text-fill: #6b7a90;" text="DAM2 | Desarrollo de Interfaces" />
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
